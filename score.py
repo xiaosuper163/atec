@@ -31,7 +31,7 @@ def my_roc(y_true, y_prob):
 
 def my_score1(y_true,y_prob): ##My own version
     fpr, tpr = my_roc(y_true,y_prob)
-    return (0.4*tpr[(fpr>=0.01).argmax()]+0.3*tpr[(fpr>=0.005).argmax()]+0.3*tpr[(fpr>=0.001).argmax()])
+    return (0.4*tpr[(fpr>=0.001).argmax()]+0.3*tpr[(fpr>=0.005).argmax()]+0.3*tpr[(fpr>=0.01).argmax()])
 
 def my_score2(y_true,y_prob): ##Adapted from SKlearn
     fpr,tpr,threhold = roc_curve(y_true, y_prob) 
