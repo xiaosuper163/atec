@@ -7,6 +7,7 @@ def my_roc(y_true, y_prob):
         y_true = np.array(y_true)
     sort_index = np.argsort(y_prob)[::-1]
     y_true = y_true[sort_index]
+    y_prob = y_prob[sort_index]
     num_p = y_true.sum()
     num_n = len(y_true) - num_p
     fp = 0
