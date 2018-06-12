@@ -1,7 +1,7 @@
 from sklearn.metrics import roc_curve
 
 def my_roc(y_true, y_prob):
-    if isinstance(y_true,pandas.core.series.Series):
+    if isinstance(y_true,pd.core.series.Series):
         y_true = np.array(y_true.tolist())
     if isinstance(y_true,list):
         y_true = np.array(y_true)
