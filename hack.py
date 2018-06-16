@@ -8,7 +8,7 @@ def hack_one_epoch(my_preds,ground_truth,score):
         current_score = my_score(ground_truth,my_preds)
         ground_truth[i] = 1 - truth
         alternate_score = my_score(ground_truth,my_preds)
-        if abs(current_score-score) > abs(alternate_score-score):
+        if abs(current_score-score) < abs(alternate_score-score):
             ground_truth[i] = truth
             
     return ground_truth
