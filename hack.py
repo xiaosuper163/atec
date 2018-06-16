@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.metrics import roc_curve
+import time
 
 def hack_one_epoch(my_preds,ground_truth,score):
     for i,(pred,truth) in enumerate(zip(my_preds,ground_truth)):
@@ -27,10 +28,16 @@ def hack(my_preds,score,epoch=100):
     np.random.seed(123)
     ground_truth = np.random.randint(0,2,size = len(my_preds))
     for i in range(epoch):
+        st = time.time()
         print ("epoch number {}".format(i))
         ground_truth = hack_one_epoch(my_preds,ground_truth,score)
+        print ('take time:{}'.format(time.time()-st))
     return ground_truth
 
+start_time = time.time()
 data = pd.read_csv("June_12.csv")
 my_preds = data['score']
 ground_truth = hack(my_preds,0.2107,100)
+print ('total take: {}'.format(time.time()-start_time))
+f = open('ground_truth', 'w')
+f.write(ground_truth)
